@@ -46,7 +46,7 @@ def Database():
     
     #cursor.execute("CREATE TABLE IF NOT EXISTS `admin` (admin_id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, username TEXT, password TEXT)")
     cursor.execute("CREATE TABLE IF NOT EXISTS users (user_id int PRIMARY KEY NOT NULL AUTO_INCREMENT, username varchar(20), password varchar(50))")
-    cursor.execute("CREATE TABLE IF NOT EXISTS product (product_id int PRIMARY KEY NOT NULL AUTO_INCREMENT, product_name varchar(50), product_qty product_price varchar(10), product_price varchar(10))")
+    cursor.execute("CREATE TABLE IF NOT EXISTS product (product_id int PRIMARY KEY NOT NULL AUTO_INCREMENT, product_name varchar(50), product_qty varchar(10), product_price varchar(10))")
     cursor.execute("SELECT * FROM users WHERE username = 'admin' AND password = 'admin'")
     if cursor.fetchone() is None:
         #cursor.execute("INSERT INTO `admin` (username, password) VALUES('admin', 'admin')")

@@ -114,8 +114,10 @@ def Reset():
 def Delete():
     if not tree.selection():
         tkMessageBox.showinfo('Construction Inventory System/Delete', 'First Select the item you want to delete')
+        viewform.lift()
     else:
         result = tkMessageBox.askquestion('Construction Inventory System/Delete', 'Are you sure you want to delete this record?', icon="warning")
+        viewform.lift()
         if result == 'yes':
             curItem = tree.focus()
             contents =(tree.item(curItem))
@@ -168,15 +170,15 @@ def AddNewForm():
 # adds new product to the database
 def AddNew():
 
-    if re.search('[a-zA-Z]', PRODUCT_QTY.get()) and re.search('[a-zA-Z]', PRODUCT_PRICE.get()):
-        tkMessageBox.showinfo('Construction Inventory System/Add New', 'Price and Quality should be integer')
+    #if re.search('[a-zA-Z]', PRODUCT_QTY.get()) and re.search('[a-zA-Z]', PRODUCT_PRICE.get()):
+        #tkMessageBox.showinfo('Construction Inventory System/Add New', 'Price and Quality should be integer')
     
-    else:
-        cursor.execute("INSERT INTO product (product_name, product_qty, product_price) VALUES(%s, %s, %s)", (str(PRODUCT_NAME.get()), int(PRODUCT_QTY.get()), int(PRODUCT_PRICE.get())))
-        conn.commit()
-        PRODUCT_NAME.set("")
-        PRODUCT_PRICE.set("")
-        PRODUCT_QTY.set("")
+    #else:
+    cursor.execute("INSERT INTO product (product_name, product_qty, product_price) VALUES(%s, %s, %s)", (str(PRODUCT_NAME.get()), int(PRODUCT_QTY.get()), int(PRODUCT_PRICE.get())))
+    conn.commit()
+    PRODUCT_NAME.set("")
+    PRODUCT_PRICE.set("")
+    PRODUCT_QTY.set("")
     
         
 

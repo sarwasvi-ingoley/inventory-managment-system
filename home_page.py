@@ -3,7 +3,6 @@ import tkinter.messagebox as tkMessageBox
 import tkinter.ttk as ttk
 from PIL import Image, ImageTk
 import os
-import re
 import MySQLdb
 
 conn = MySQLdb.connect(host = "localhost", user = "sarwasvi", passwd = "sarwasvi", database = "inventory_management_system")
@@ -174,12 +173,15 @@ def AddNew():
         #tkMessageBox.showinfo('Construction Inventory System/Add New', 'Price and Quality should be integer')
     
     #else:
-    cursor.execute("INSERT INTO product (product_name, product_qty, product_price) VALUES(%s, %s, %s)", (str(PRODUCT_NAME.get()), int(PRODUCT_QTY.get()), int(PRODUCT_PRICE.get())))
-    conn.commit()
-    PRODUCT_NAME.set("")
-    PRODUCT_PRICE.set("")
-    PRODUCT_QTY.set("")
-    
+    try:
+        cursor.execute("INSERT INTO product (product_name, product_qty, product_price) VALUES(%s, %s, %s)", (str(PRODUCT_NAME.get()), int(PRODUCT_QTY.get()), int(PRODUCT_PRICE.get())))
+        conn.commit()
+        PRODUCT_NAME.set("")
+        PRODUCT_PRICE.set("")
+        PRODUCT_QTY.set("")
+    except:
+        tkMessageBox.showinfo('Construction Inventory System/Add Product', 'Enter correct values')
+        addnewform.lift()    
         
 
 
